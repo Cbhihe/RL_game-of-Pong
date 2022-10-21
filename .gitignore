@@ -1,0 +1,10 @@
+﻿*
+
+!/.gitignore
+!/License.md
+!/Readme.md
+
+!/Report/
+!/Report/project-report.pdf
+!/src/
+!/src/*
