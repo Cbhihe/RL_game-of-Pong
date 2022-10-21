@@ -1,9 +1,9 @@
+import os
 import matplotlib.pyplot as plt
 import numpy as np
-import os
 
-TRAINDIR='train'
-FIGDIR='fig'
+TRAINDIR = 'train'
+FIGDIR = 'fig'
 
 
 def plot_group_point_diff():

@@ -5,6 +5,7 @@ from pygame.sprite import Sprite, collide_rect
 from pygame import Rect,Surface
 
 from control import *
+
 import numpy as np
 
 BOARD_MARGIN_X = 20
@@ -20,16 +21,14 @@ SCORE_MARGIN_X = 150
 SCORE_MARGIN_Y = 50
 
 class Board(Sprite):
-	def __init__(self, screen, size, cl, cr, display=True):
+	def _init__(self, screen, size, cl, cr, display=True):
 		Sprite.__init__(self)
 		self.screen = screen
 		self.size = size
 		self.surf = Surface(size)
 		self.rect = self.surf.get_rect()
-	
 		self.pl = Paddle(self, PADDLE_MARGIN_X, PADDLE_MARGIN_Y, 'left')
 		self.pr = Paddle(self, PADDLE_MARGIN_X, PADDLE_MARGIN_Y, 'right')
-
 		self.ball = Ball(self, BALL_DIAMETER)
 
 		cl.set_board(self)
@@ -81,7 +80,6 @@ class Board(Sprite):
 
 		self.surf.blit(surf_l, rect_l)
 		self.surf.blit(surf_r, rect_r)
-
 	
 	def update(self, pause=False):
 		if self.display:
@@ -467,7 +465,7 @@ class Ball(Sprite):
 		v = v - 2 * np.dot(v, n) * n
 
 
-		# Avoid the ball to move close to 90 and 270 degrees (pi/2 and 3 pi/2)
+		# Prevent ball from moving too close to 90º and 270º i.e.(pi/2 and 3 pi/2)
 
 		#angle_limit = 0.2 # About 11.5 degrees
 		#if abs(angle - pi/2) < 0.2:
@@ -484,7 +482,7 @@ class Ball(Sprite):
 
 		#vx = -vx
 		
-		# Speed up a bit the ball
+		# Speed ball up 
 		v *= 1.1
 
 		self.set_speed(v)
@@ -494,7 +492,7 @@ class Ball(Sprite):
 
 		abs_speed = np.linalg.norm(speed)
 
-		# Avoid the ball from exceeding the top speed
+		# Limit ball top speed
 		if abs_speed > self.top_speed:
 			speed/abs_speed 
 			speed *= self.top_speed/abs_speed

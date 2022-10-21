@@ -1,11 +1,11 @@
+from pong import *
+
 import control
 import pygame, os, time, pickle, sys
 import os.path
 import gzip
 from plot import plot_all
 import argparse
-
-from pong import *
 
 # Center window
 os.environ['SDL_VIDEO_CENTERED'] = '1'
@@ -29,7 +29,7 @@ parser.add_argument("-c", "--controller",
 	help="the name of the controller to use", type=str, required=True)
 
 parser.add_argument("-p", "--play", help="play the trained controller",
-    action="store_true")
+	action="store_true")
 
 parser.add_argument("-k", "--keyboard", help="use the keyboard when playing",
 	action="store_true")
